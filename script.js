@@ -13,7 +13,9 @@ function randomHole() {
 function hello () {
     const hole = randomHole();
     hole.addClass('up');
-    holes.fadeTo(800);
+    setInterval(function (){
+        Math.floor(Math.random() * 600 + 200);
+    },1000)
     holes.click(function (){
         $(this).removeClass('up');
         scoreBoard.text(parseInt(scoreBoard.text())+1);
@@ -21,20 +23,41 @@ function hello () {
 }
 
 //calcul the time
-
-setTimeout(function(){
-    let time = 0;
-    time++;
-    if (time === 10) {
-        clearTimeout()
-        alert('fin de partie');
-    }
-});
+let time = 0
+function timerChange(){
+    setTimeout(function (){
+        time--;
+        if(time > 0){
+            timerChange();
+        }
+        else if(time === 0) {
+            alert('connasse de taupe !');
+            location.reload();
+        }
+        console.log(time);
+    },1000);
+}
 
 $('button').click(function startGame(){
     if( $('.hole.up').get().length === 0) {
         lastHole = 0;
         scoreBoard.text(0);
         hello();
+        timerChange();
     }
+
+    let time = 0;
+    function timerChange(){
+        setTimeout(function (){
+            time--;
+            if(time > 0){
+                timerChange();
+            }
+            else if(time === 0) {
+                alert('connasse de taupe !');
+                location.reload();
+            }
+        },1000);
+    }
+    timerChange();
 });
