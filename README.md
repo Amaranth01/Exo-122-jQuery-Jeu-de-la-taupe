@@ -12,7 +12,7 @@ Consignes :
 à l'élément ayant pour classe "hole" selectionné.
 - La taupe doit apparaitre durant un intervale de temps compris entre 200 millisecondes et 1 seconde ( vous générerez cette
 valeur aléatoirement)
-- A chaque fois qu'une taupe est clickée par l'utilisateur, vous augmenterez le score de celui ci de 1 point, vous ferrez
+- A chaque fois qu'une taupe est clickée par l'utilisateur, vous augmenterez le score de celui-ci de 1 point, vous ferrez
 disparaitre la taupe en retirant la classe "up" à l'élément approprié ( vous utiliserez la méthode jquery appropriée pour
 faire cela )
 
