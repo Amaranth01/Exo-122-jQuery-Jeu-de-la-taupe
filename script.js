@@ -1,7 +1,6 @@
-const holes = $('.hole'); //trous
+const holes = $('.hole');
 const scoreBoard = $('.score');
-const moles = $('.mole'); //taupe
-let lastHole = 0;
+const moles = $('.mole');
 
 //choose random holes
 function randomHole() {
@@ -12,26 +11,27 @@ function randomHole() {
 //up the hole
 function hello () {
     const hole = randomHole();
+    //calcul for the speed
+    let speed = Math.floor(Math.random()*(1000-200) +200 )
     setTimeout(function (){
         hole.addClass('up');
-    },10);
-
-
-    holes.click(function (){
-        $(this).removeClass('up');
-        scoreBoard.text(parseInt(scoreBoard.text())+1);
-    });
+    },speed);
 }
+//down the moles and add the score
+moles.click(function (){
+    $(this).removeClass('up');
+    scoreBoard.text(parseInt(scoreBoard.text())+1);
+});
 
 $('button').click(function startGame(){
     if( $('.hole.up').get().length === 0) {
-        lastHole = 0;
         scoreBoard.text(0);
 
-        //calcul the time
+        //calcul the time of the party
         let time = 10;
         let interval = setInterval(function (){
             hello();
+            holes.removeClass('up');
             if(time > 0){
                 time--;
             }
@@ -40,5 +40,4 @@ $('button').click(function startGame(){
             }
         },1000);
     }
-
 });
